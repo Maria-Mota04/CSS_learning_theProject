@@ -12,7 +12,6 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="css/style.css" />
 
-    <!--defer = tells the script to wait until everything else is loaded before loading js-->
     <script scr="js/main.js" defer></script>
   </head>
 
@@ -37,7 +36,6 @@
       </nav>
     </header>
     <section class="hero">
-      <!--Hero section, part of the page with a big image or attention getter -->
       <h2 class="hero__h2">Bienvenidos!</h2>
       <figure>
         <img
@@ -47,7 +45,6 @@
           width="1000"
           height="667"
         />
-        <!--takes the caption off the screen but available for accessibility-->
         <figcaption class="offscreen">Tacos and a Drink</figcaption>
       </figure>
     </section>
@@ -56,8 +53,6 @@
       <article id="menu" class="main__article menu">
         <h2 class="menu__h2">Our Menu</h2>
 
-        <!--grid will ignore everything that has display:content
-        everything that has class= menu__... if going to be for the grid-->
         <table class="menu__container">
           <caption class="offscreen">
             Our Tacos
@@ -113,9 +108,7 @@
       </article>
     </main>
     <footer class="footer">
-      <!--wrapping in a span so the lines won't break-->
       <p>
-        <!--to update de current year (js)-->
         <span class="nowrap">
           Copyright &copy;
           <time id="year"></time>

@@ -10,13 +10,11 @@
 }
 
 img {
-  /*rid of the margin bellow*/
   display: block;
   max-width: 100%;
   height: aut0;
 }
 
-/*forms dont inherit*/
 input,
 button,
 textarea {
@@ -29,11 +27,9 @@ textarea {
   /* FONTS */
   --FF: "Nunito", sans-serif;
   --FF-HEADINGS: "Fugaz One", cursive;
-  /*keeps us from adding mini media queries*/
   --FS: clamp(1rem, 2.2vh, 1.5rem);
 
   /* COLORS */
-  /*good to have control to change from light to dark*/
   --BGCOLOR-FADE: rgb(252, 220, 160);
   --BGCOLOR: orange;
   --BGIMAGE: linear-gradient(to bottom, var(--BGCOLOR), var(--BGCOLOR-FADE));
@@ -56,18 +52,12 @@ textarea {
   --BORDER-RADIUS: 15px;
 
   /*STANDARD PADDING*/
-  /*tb = top bottom*/
   --PADDING-TB: 0.25em;
-  /*right and left padding will take up 5 %*/
   --PADDING-SIDE: 2.5%;
 
   /*STANDARD MARGIN*/
-  /*first value top bottom, second value right left*/
   --MARGIN: clamp(1em, 2.5vh, 1.5em) 0;
 }
-
-/*es, if you don't set specific colors in the dark mode (prefers-color-scheme: dark) section,
- the colors will indeed inherit from the light mode (default) settings.*/
 
 /* || DARK MODE */
 @media (prefers-color-scheme: dark) {
@@ -90,20 +80,15 @@ textarea {
 
 /* || UTILITY CLASSES */
 
-/*always use thse classes*/
-
-/*to remove what i dont want, but it is still part of the html*/
 .offscreen {
   position: absolute;
   left: -10000px;
 }
 
-/*ensure that the text wont wrap in a specific spot*/
 .nowrap {
   white-space: nowrap;
 }
 
-/*center text*/
 .center {
   text-align: center;
 }
@@ -111,12 +96,10 @@ textarea {
 /* || GENERAL STYLES*/
 
 html {
-  /*always use this*/
   scroll-behavior: smooth;
   font-size: var(--FS);
   font-family: var(--FF);
 
-  /*fall back, always put*/
   background-color: var(--BGCOLOR);
   background-image: var(--BGIMAGE);
 }
@@ -127,12 +110,10 @@ body {
   min-height: 100vh;
   max-width: 800px;
 
-  /*center the body*/
   margin: 0 auto;
   border-left: var(--BORDERS);
   border-right: var(--BORDERS);
 
-  /*x = 0  y  = 0 blur = 10px COLOR*/
   box-shadow: 0 0 10px var(--BORDER-COLOR);
 }
 
@@ -157,7 +138,6 @@ a:any-link {
   color: var(--LINK-COLOR);
 }
 
-/*focus-visible, after it is used it will change the color*/
 a:hover,
 a:focus-visible {
   color: var(--LINK-HOVER);
@@ -170,7 +150,6 @@ a:active {
 /* || HEADER */
 
 .header {
-  /*so it stays at the top always and stays on top of other elements*/
   position: sticky;
   top: 0;
   z-index: 1;
@@ -187,15 +166,12 @@ a:active {
   background-color: var(--NAV-BGCOLOR);
   border-bottom: var(--BORDERS);
   font-weight: bold;
-  /*x y blue spead-radius color*/
   box-shadow: 0 6px 5px -5px var(--BORDER-COLOR);
 }
 
 .header__ul {
   padding: var(--PADDING-TB) var(--PADDING-SIDE);
-  /*removes markers*/
   list-style-type: none;
-  /*makes a row*/
   display: flex;
   justify-content: space-evenly;
   gap: 1rem;
@@ -204,7 +180,6 @@ a:active {
 /* || HERO */
 
 .hero {
-  /*for a relative point for an absolute element*/
   position: relative;
 }
 
@@ -214,14 +189,10 @@ a:active {
   padding: 0.25em 0.5em;
   letter-spacing: 0.1rem;
   text-shadow: 2px 2px 5px var(--BORDER-COLOR);
-  /*takes the element out of the flow, now it wont have a 100% width as a block element*/
   position: absolute;
   left: 20px;
   top: -100px;
 
-  /*after adding keyframe I add the animation*/
-  /*name duration timing-function delay iteration-count direction fill-mode play-state*/
-  /*forwards = keeps the last keyframe*/
   animation: showWelcome 0.5s ease-in-out 1s forwards;
 }
 
@@ -241,14 +212,11 @@ a:active {
   }
 }
 
-/*should inspect the mobile design constantly so I can see if the sizes are correct*/
-
 /* || FOOTER */
 
 .footer {
   position: sticky;
   bottom: 0;
-  /*to stay like with the header*/
   background-color: var(--HEADER-BGCOLOR);
   color: var(--HEADER-COLOR);
   padding: var(--PADDING-TB) var(--PADDING-SIDE);
@@ -262,8 +230,6 @@ a:active {
 }
 
 .main__article {
-  /*enable the information to show instead of scrolling under the header
-  margin between the article and the viewport, wont let the menu hide*/
   scroll-margin-top: 6.5rem;
   margin: var(--MARGIN);
 }
@@ -273,15 +239,10 @@ a:active {
 }
 
 .main__article:last-child {
-  /*extra room to scroll*/
   min-height: calc(100vh - 20rem);
 }
 
-/*starting individual pages*/
-
 /* || ABOUT */
-
-/*I dont need to style about, just wanted to have it as a parent*/
 
 .about__trivia {
   margin: var(--MARGIN);
@@ -328,30 +289,17 @@ a:active {
 
 /* || MENU */
 
-/*cant use grid directly to a table, I need to flatten it*/
-/*display: contents = makes the table a grid,
-
-we will display: contents in the table head, tr, tbody, tfoot, so grid ignores those, 
-the content we want for the grid will be inside the th and td
-*/
-
 thead,
 tbody,
 tfoot,
 tr {
-  /*for the grid to ignore the table elements
-  took them out of the flow*/
   display: contents;
 }
 
 .menu__container {
   display: grid;
-  /*3 cols each 1 fraction*/
   grid-template-columns: repeat(3, 1fr);
-  /*only need to assign the labels to those who will take up more than 1 square*/
 
-  /*cr = crunchy, crp = cr price, sf = soft, sfp = soft price
-  mapped out labels, now I need to apply them to the items*/
   grid-template-areas:
     "hd1 hd2 hd2"
     "cr cr1 cr1p"
@@ -364,11 +312,8 @@ tr {
 
   gap: 0.1em;
   margin-bottom: 1em;
-} /*gid has 8 rows and 3 columns, row1 = "hd1, hd2, hd3"....*/
-
-/*apply the labels*/
+}
 .menu__cr {
-  /*gave it a spot in the grid*/
   grid-area: cr;
 }
 
@@ -387,7 +332,6 @@ tr {
   color: var(--HIGHLIGHT-COLOR);
   font-weight: bold;
   height: 100%;
-  /*to make the text center*/
   display: grid;
   place-content: center;
 }
@@ -404,7 +348,6 @@ tr {
   place-content: center;
 }
 
-/*tacos spot, to round the left side*/
 thead th:first-child {
   border-top-left-radius: var(--BORDER-RADIUS);
 }
